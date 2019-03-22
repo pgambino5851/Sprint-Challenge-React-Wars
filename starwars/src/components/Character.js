@@ -6,7 +6,7 @@ const Character = props => {
 return (
     <div className ="character">
         <p>Name: {props.starwarsChar.name}</p>
-        <p>Height: {props.starwarsChar.height}</p>
+        <p>Height: {props.starwarsChar.height} space-inches</p>
         <p>Gender: {props.starwarsChar.gender}</p>
         {/* <p>Films: {props.starwarsChar.films.map(film => <p> {film.charAt(film.length-2)} </p>)} </p> */}
     </div>

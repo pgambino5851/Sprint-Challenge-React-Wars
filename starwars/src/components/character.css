@@ -1,6 +1,13 @@
 .character{
-    background: white;
+    background: #BDC6C5;
+    color: #B26E41;
     border: .1rem solid black;
     border-radius: .5rem;
     margin-bottom: 5rem; 
+    font-size: 1.8rem;
+}
+
+.character p {
+    border-bottom: .1rem dashed #B26E41;;
+    padding-bottom: 1rem;
 }
