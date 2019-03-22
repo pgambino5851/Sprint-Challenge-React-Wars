@@ -1,7 +1,9 @@
 .character-list{
-    /* background: white; */
-    display: flex;
-    flex-direction: column;
-    width: 17.5%;
-    margin: 0 auto;
+        /* background: white; */
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: 0 auto;
 }
