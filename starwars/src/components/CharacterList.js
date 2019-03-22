@@ -4,7 +4,7 @@ import './character-list.css'
 
 const CharacterList = props => {
     // console.log(props.starwarsChars.forEach(char => console.log(char.name)));
-    console.log(props.starwarsChars)
+    // console.log(props.starwarsChars);
     return (
         
         <div className='character-list'>
