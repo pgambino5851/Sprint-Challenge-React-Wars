@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+import CharacterList from './components/CharacterList'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      id: Date.now()
     };
   }
 
+  
   componentDidMount() {
     this.getCharacters('https://swapi.co/api/people/');
   }
@@ -29,11 +32,17 @@ class App extends Component {
       });
   };
 
+
+
   render() {
+    // (this.state.starwarsChars.forEach(item => console.log(item.name)));
+    // console.log(this.state.starwarsChars);
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+        <CharacterList key = {this.state.id} starwarsChars = {this.state.starwarsChars} />
       </div>
+      
     );
   }
 }
