@@ -1,16 +1,36 @@
 import React, { Component } from 'react';
 import './App.css';
+import CharacterList from './components/CharacterList'
+import PageButton from './components/PageButton';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      nextPage: '',
+      prevPage: '',
+      id: Date.now()
     };
   }
 
+  
   componentDidMount() {
     this.getCharacters('https://swapi.co/api/people/');
+  }
+
+  nextPageToggle = () => {
+    console.log("nextPageToggle fired");
+    console.log(this.state.nextPage);
+    this.getCharacters(this.state.nextPage);
+  }
+
+  prevPageToggle = () => {
+    if(this.state.prevPage != null){
+    this.getCharacters(this.state.prevPage);
+    } else{
+      alert("There are no more previous pages.");
+    }
   }
 
   getCharacters = URL => {
@@ -22,6 +42,9 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
+        // console.log(data);
+        this.setState({prevPage: data.previous})
+        this.setState({nextPage: data.next});
         this.setState({ starwarsChars: data.results });
       })
       .catch(err => {
@@ -29,11 +52,22 @@ class App extends Component {
       });
   };
 
+
+
   render() {
+    // (this.state.starwarsChars.forEach(item => console.log(item.name)));
+    // console.log(this.state.starwarsChars);
+    console.log(this.state.nextPage);
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+        <PageButton 
+        nextPageToggle={this.nextPageToggle} 
+        prevPageToggle={this.prevPageToggle}
+        />
+        <CharacterList key = {this.state.id} starwarsChars = {this.state.starwarsChars} />
       </div>
+      
     );
   }
 }
